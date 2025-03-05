@@ -28,7 +28,7 @@ const ScheduleView = () => {
           </div>
           <div className="flex items-center text-gray-500 text-sm">
             <BookOpen className="h-4 w-4 mr-1 text-gray-400" />
-            <span>Room 201 · Prof. Johnson</span>
+            <span>Prof Susovan Mandal</span>
           </div>
         </div>
         
@@ -42,7 +42,7 @@ const ScheduleView = () => {
           </div>
           <div className="flex items-center text-gray-500 text-sm">
             <BookOpen className="h-4 w-4 mr-1 text-gray-400" />
-            <span>Room 105 · Prof. Smith</span>
+            <span>Prof Susovan Mandal</span>
           </div>
         </div>
       </div>
