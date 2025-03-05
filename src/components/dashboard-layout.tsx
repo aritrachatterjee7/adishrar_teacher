@@ -1,16 +1,17 @@
-"use client"
-import React from 'react';
-import { Menu, Bell, Settings } from 'lucide-react';
-import ScheduleView from './dashboard/schedule-view';
-import QuickRecord from './dashboard/quick-record';
-import OverviewStats from './dashboard/overview-stats';
-import ScheduleCalendar from './dashboard/schedule-calendar';
+"use client";
+import React from "react";
+import Image from "next/image";
+import { Menu, Bell, Settings } from "lucide-react";
+import ScheduleView from "./dashboard/schedule-view";
+import QuickRecord from "./dashboard/quick-record";
+import OverviewStats from "./dashboard/overview-stats";
+import ScheduleCalendar from "./dashboard/schedule-calendar";
 
 const DashboardLayout = () => {
   const teacher = {
     name: "Mr. John Doe",
     subject: "Mathematics",
-    imageUrl: "/api/placeholder/48/48"
+    imageUrl: "/api/placeholder/48/48", // Make sure this URL is valid or replace with a real image
   };
 
   return (
@@ -22,14 +23,20 @@ const DashboardLayout = () => {
             <div className="flex items-center space-x-3">
               <Menu className="w-5 h-5 text-gray-500 cursor-pointer" />
               <div className="flex items-center space-x-2">
-                <img 
-                  src={teacher.imageUrl} 
-                  alt={teacher.name} 
+                <Image
+                  src={teacher.imageUrl}
+                  alt={teacher.name}
+                  width={48}
+                  height={48}
                   className="w-8 h-8 rounded-full border-2 border-blue-200"
                 />
                 <div>
-                  <h2 className="font-semibold text-sm text-gray-800">{teacher.name}</h2>
-                  <p className="text-xs text-gray-500">{teacher.subject} Teacher</p>
+                  <h2 className="font-semibold text-sm text-gray-800">
+                    {teacher.name}
+                  </h2>
+                  <p className="text-xs text-gray-500">
+                    {teacher.subject} Teacher
+                  </p>
                 </div>
               </div>
             </div>
