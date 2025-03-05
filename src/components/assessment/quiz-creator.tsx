@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Trash2, Sparkles, CloudLightning, Sun, Moon, Cloud, Award, Save, Send } from 'lucide-react';
+import { Plus, Trash2, Sparkles, CloudLightning, Cloud, Award, Save, Send } from 'lucide-react';
 
 interface Question {
   id: number;
