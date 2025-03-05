@@ -415,7 +415,7 @@ const Dashboard = () => {
         <div className="mt-12">
           <div className="flex items-center space-x-2 mb-8">
             <BookOpen className="h-8 w-8 text-blue-600" />
-            <h2 className="text-3xl font-bold text-gray-800">Teacher's Overview</h2>
+            <h2 className="text-3xl font-bold text-gray-800">Teacher Overview</h2>
           </div>
 
           {/* Skills Radar Chart */}

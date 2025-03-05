@@ -10,7 +10,7 @@ const ScheduleView = () => {
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-gray-800 flex items-center">
           <Calendar className="h-5 w-5 mr-2 text-purple-500" />
-          Today's Schedule
+          Today Schedule
         </h2>
         <span className="text-xs font-medium bg-purple-100 text-purple-600 px-2 py-1 rounded-full">
           2 Classes
