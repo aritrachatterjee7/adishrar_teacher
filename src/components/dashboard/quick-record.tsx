@@ -1,15 +1,31 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Video, X } from "lucide-react";
+import RecordingScreen from "@/src/components/dashboard/recording-screen";
 
-const QuickRecord = () => {
+
+interface QuickRecordProps {
+  onOpenRecordingScreen?: () => void;
+  onCloseRecordingScreen?: () => void;
+}
+
+const QuickRecord: React.FC<QuickRecordProps> = ({
+  onOpenRecordingScreen,
+  onCloseRecordingScreen,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedClass, setSelectedClass] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
 
   const classes = ["Class 9", "Class 10", "Class 11", "Class 12"];
   const subjects = ["Physics", "Chemistry", "Biology", "Mathematics"];
+
+  const handleStartRecording = () => {
+    if (onOpenRecordingScreen) {
+      onOpenRecordingScreen();
+    }
+  };
 
   return (
     <>
@@ -23,7 +39,7 @@ const QuickRecord = () => {
         <Video size={24} />
       </motion.button>
 
-      {/* Modal */}
+      {/* Modal for Class and Subject Selection */}
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <motion.div
@@ -39,6 +55,7 @@ const QuickRecord = () => {
               </button>
             </div>
             <div className="space-y-4">
+              {/* Class Select Dropdown */}
               <select
                 className="w-full p-2 border rounded-lg"
                 value={selectedClass}
@@ -46,10 +63,13 @@ const QuickRecord = () => {
               >
                 <option value="">Select Class</option>
                 {classes.map((cls) => (
-                  <option key={cls} value={cls}>{cls}</option>
+                  <option key={cls} value={cls}>
+                    {cls}
+                  </option>
                 ))}
               </select>
 
+              {/* Subject Select Dropdown */}
               <select
                 className="w-full p-2 border rounded-lg"
                 value={selectedSubject}
@@ -57,19 +77,32 @@ const QuickRecord = () => {
               >
                 <option value="">Select Subject</option>
                 {subjects.map((sub) => (
-                  <option key={sub} value={sub}>{sub}</option>
+                  <option key={sub} value={sub}>
+                    {sub}
+                  </option>
                 ))}
               </select>
 
+              {/* Start Recording Button */}
               <button
-                className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700"
+                className={`w-full bg-blue-600 text-white p-2 rounded-lg ${
+                  !selectedClass || !selectedSubject
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:bg-blue-700"
+                }`}
                 disabled={!selectedClass || !selectedSubject}
+                onClick={handleStartRecording}
               >
                 Start Recording
               </button>
             </div>
           </motion.div>
         </div>
+      )}
+
+      {/* Full-Screen Recording Screen */}
+      {onCloseRecordingScreen && (
+        <RecordingScreen onClose={onCloseRecordingScreen} />
       )}
     </>
   );
